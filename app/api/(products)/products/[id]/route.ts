@@ -27,3 +27,24 @@ export const GET = async(req: NextRequest, context: {params: any}) => {
         return new NextResponse(JSON.stringify({error: error.message}), {status: error.status});
     }
 }
+
+export const PATCH = async(req: NextRequest, context: {params: any}) => {
+    try {
+        await connectDB();
+        const body = await req.json();
+        const productID = context.params.id;
+        const product = await Product.findOneAndUpdate({_id: productID}, {...body}, {new: true});
+
+        if(!product){
+            throw new BadRequest('Product does not exist');
+        }
+
+        return new NextResponse(JSON.stringify({product: product}), {status:200});
+
+    } catch (error: any) {
+        if(error instanceof CustomError) {
+            return new NextResponse(error.message, {status: error.statusCode});
+        }
+        return new NextResponse('Error: ', error.message);
+    }
+}
