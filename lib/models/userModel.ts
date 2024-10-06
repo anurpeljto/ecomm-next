@@ -1,6 +1,6 @@
 import mongoose, {models} from "mongoose";
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import {SignJWT} from 'jose';
 
 interface IUser extends Document {
     email: string,
@@ -39,7 +39,10 @@ userSchema.methods.comparePW = async function(inputPassword: string) {
 }
 
 userSchema.methods.createToken = async function() {
-    const token = jwt.sign({email: this.email, first_name: this.first_name}, process.env.JWT_SECRET || 'fallbackOption192121', {expiresIn: '1h'});
+    const token = await new SignJWT({email: this.email, first_name: this.first_name})
+    .setProtectedHeader({alg: 'HS256'})
+    .setExpirationTime(process.env.JWT_LIFETIME || '1h')
+    .sign(new TextEncoder().encode(process.env.JWT_SECRET) || 'fallback1921');
     return token;
 }
 

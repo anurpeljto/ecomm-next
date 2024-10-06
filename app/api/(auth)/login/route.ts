@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import User from '@/lib/models/userModel';
 import { NextRequest, NextResponse } from 'next/server';
 import BadRequest from '@/lib/errors/BadRequest';
