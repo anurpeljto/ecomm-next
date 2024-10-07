@@ -40,7 +40,7 @@ export const GET = async(req: NextRequest) => {
         const products = await Product.find(query).sort(sort);
         return new NextResponse(JSON.stringify(products), {status: 200});
     } catch (error: any) {
-        return new NextResponse('Error fetching products: ' + error.message, {status: 200})
+        return new NextResponse('Error fetching products: ' + error.message, {status: 500})
     }
 }
 
