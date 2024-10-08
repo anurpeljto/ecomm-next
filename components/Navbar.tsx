@@ -4,15 +4,15 @@ import LinkWithUnderline from './LinkWithUnderline'
 
 const Navbar = () => {
   return (
-    <nav className='relative w-full flex flex-row items-center justify-between px-10 py-5'>
-      <div className='sm:flex flex-row sm:gap-10 gap-5 items-center justify-center hidden'>
+    <nav className='relative w-full flex flex-row items-center justify-between md:px-10 px-5 py-5'>
+      <div className='sm:flex flex-row md:gap-10 gap-5 items-center justify-center hidden'>
             <LinkWithUnderline title='Women' href='/women'/>
             <LinkWithUnderline title='Men' href='/men'/>
             <LinkWithUnderline title='Kids' href='/kids'/>
             <LinkWithUnderline title='Brands' href='/brands'/>
       </div>
 
-      <Link href='/' className='absolute right-1/2 transform translate-x-1/2'>
+      <Link href='/' className='lg:absolute right-1/2'>
         <span className='text-2xl'>HEAVENLY</span>
       </Link>
 
