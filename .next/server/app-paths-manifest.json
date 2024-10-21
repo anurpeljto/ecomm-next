@@ -1,8 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
   "/(pages)/women/page": "app/(pages)/women/page.js",
   "/(pages)/men/page": "app/(pages)/men/page.js",
-  "/api/(products)/products/route": "app/api/(products)/products/route.js",
-  "/(pages)/kids/page": "app/(pages)/kids/page.js"
+  "/(pages)/product/[id]/page": "app/(pages)/product/[id]/page.js",
+  "/api/(products)/products/[id]/route": "app/api/(products)/products/[id]/route.js",
+  "/page": "app/page.js"
 }

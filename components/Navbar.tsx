@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
 
       <Link href='/' className='lg:absolute left-[590px]'>
-        <span className='text-2xl'>HEAVENLY</span>
+        <span className='text-2xl'>THRIFTY</span>
       </Link>
 
       <div className='sm:flex flex-row items-center justify-center hidden gap-5'>

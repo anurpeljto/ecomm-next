@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
 import { ProductType } from '@/app/page'
+import Link from 'next/link';
 
 interface ProductContainerProps {
   product: ProductType;
 }
-
 
 const ProductContainer = ({product} : ProductContainerProps) => {
   let category = '';
@@ -23,7 +23,7 @@ const ProductContainer = ({product} : ProductContainerProps) => {
   }
 
   return (
-    <div className='flex group flex-col items-start justify-center overflow-hidden gap-2 cursor-pointer dark:hover:bg-white hover:bg-black transform-all duration-500'>
+    <Link href={`/product/${product._id}`} className='flex group flex-col items-start justify-center overflow-hidden gap-2 cursor-pointer dark:hover:bg-white hover:bg-black transform-all duration-500'>
       <Image src={`${product.image[0].src}`} alt='Male model' height={200} width={350} className='object-contain bg-gray-200 dark:bg-compBlack px-5' />
       <div className='flex flex-col group-hover:text-white dark:group-hover:text-compBlack'>
         <span className='text-lg'>{category}</span>
@@ -31,7 +31,7 @@ const ProductContainer = ({product} : ProductContainerProps) => {
       </div>
 
       <span className='text-gray-400'>{product.price}</span>
-    </div>
+    </Link>
   )
 }
 
