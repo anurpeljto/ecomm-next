@@ -1,12 +1,19 @@
 import ProductContainer from "@/components/ProductContainer";
+import { Types } from "mongoose";
+
+export type ImageType = {
+  src: string,
+  _id: Types.ObjectId
+}
 
 export type ProductType = {
+  _id: Types.ObjectId,
   name: string,
-  price: number,
-  featured?: boolean,
-  rating?: number,
-  company: string
+  category: Types.ObjectId,
+  image: ImageType[],
+  price: number
 }
+
 
 const fetchProducts = async(): Promise<ProductType[]> => {
   try {
@@ -30,7 +37,7 @@ export default async function Home() {
       <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 grid-flow-row gap-10 h-full w-full">
           {
             products && products.map((product: ProductType, index: number) => (
-              <ProductContainer key={index} name={product.name} price={product.price} company={product.company}/>
+              <ProductContainer key={index} product={product}/>
             ))
           }
       </div>

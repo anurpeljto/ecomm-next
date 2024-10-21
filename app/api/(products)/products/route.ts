@@ -1,11 +1,10 @@
-import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import Product from "@/lib/models/productModel";
 
 type Query = {
     price?: {$gte: number},
-    rating?: {$gte: number}
+    category?: string
 }
 
 export const GET = async(req: NextRequest) => {
@@ -13,7 +12,7 @@ export const GET = async(req: NextRequest) => {
         await connectDB();
         const {searchParams} = new URL(req.url);
         const price = searchParams.get('price');
-        const rating = searchParams.get('rating');
+        const category = searchParams.get('category');
         const sortBy = searchParams.get('sortBy');
         const sortOrder = searchParams.get('sortOrder') || 'asc';
 
@@ -23,10 +22,11 @@ export const GET = async(req: NextRequest) => {
             const priceVal = parseFloat(price);
             query.price = {$gte: priceVal};
         }
-        if(rating) {
-            const ratingVal = parseFloat(rating);
-            query.rating = {$gte: ratingVal}
+
+        if(category) {
+            query.category = category;
         }
+
 
         let sort: [string, 1 | -1][] = [['name', 1]];
 

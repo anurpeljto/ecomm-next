@@ -1,26 +1,22 @@
-import mongoose, { model, models } from "mongoose";
+import mongoose, { model, models, Types } from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
+    _id: {
+        type: Types.ObjectId,
+        required: false
+    },
     name: {
         type: "string",
         required: [true, "Product name is required"],
         trim: true
     },
     price: {
-        type: "number",
+        type: "string",
         required: true,
         trim: true
     },
-    featured: {
-        type: 'boolean',
-        required: true
-    },
-    rating: {
-        type: 'number',
-        required: true
-    },
-    company: {
-        type: "string",
+    category: {
+        type: Types.ObjectId,
         required: true
     }
 },

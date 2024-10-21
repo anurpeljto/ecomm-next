@@ -14,7 +14,7 @@ const connectDB = async() => {
 
         if(process.env.MONGO_URI) {
             mongoose.connect(process.env.MONGO_URI, {
-                dbName:'Store',
+                dbName:'FULL-BACKEND',
                 bufferCommands: true
             });
             console.log('Connected');
